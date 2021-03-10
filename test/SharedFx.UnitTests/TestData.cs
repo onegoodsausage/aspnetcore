@@ -20,6 +20,9 @@ namespace Microsoft.AspNetCore
 
         public static string GetSharedFxRuntimeIdentifier() => GetTestDataValue("SharedFxRuntimeIdentifier");
 
+        public static bool GetValidateBaseline() =>
+            string.Equals(GetTestDataValue("ValidateBaseline"), "true", StringComparison.OrdinalIgnoreCase);
+
         private static string GetTestDataValue(string key)
              => typeof(TestData).Assembly.GetCustomAttributes<TestDataAttribute>().Single(d => d.Key == key).Value;
     }
